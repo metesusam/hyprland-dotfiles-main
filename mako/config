@@ -1,0 +1,81 @@
+# Mako Configuration - Optimized for productivity
+# See `man 5 mako` for details
+
+# Core appearance
+font=JetBrains Mono 10
+width=350
+height=100
+margin=10,10,10,10
+padding=12
+border-size=2
+border-radius=8
+progress-color=over #89b4fa
+
+# Content
+max-visible=5
+layer=overlay
+anchor=top-right
+
+# Timing
+default-timeout=5000
+ignore-timeout=0
+group-by=app-name,summary
+
+# Interaction
+on-button-left=dismiss
+on-button-middle=dismiss-all
+on-button-right=dismiss
+on-touch=dismiss
+max-history=100
+
+# Images/Icons
+icon-path=/usr/share/icons/Papirus-Dark
+max-icon-size=48
+icon-location=left
+format=<b>%s</b>\n%b
+
+# Catppuccin Mocha Theme
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+
+# Urgency-based styling
+[urgency=low]
+border-color=#74c7ec
+background-color=#1e1e2e
+text-color=#cdd6f4
+default-timeout=3000
+
+[urgency=normal]
+border-color=#89b4fa
+background-color=#1e1e2e
+text-color=#cdd6f4
+default-timeout=5000
+
+[urgency=high]
+border-color=#f38ba8
+background-color=#1e1e2e
+text-color=#f38ba8
+default-timeout=0
+ignore-timeout=1
+
+# Fullscreen behavior - show critical notifications
+[mode=fullscreen]
+layer=overlay
+invisible=0
+
+# Application-specific settings
+[app-name=spotify]
+default-timeout=3000
+group-by=category
+background-color=#1e1e2e
+border-color=#a6e3a1
+format=<b>Now Playing</b>\n%s\n%b
+
+[app-name=thunderbird|evolution|geary]
+default-timeout=10000
+group-by=category
+
+# Developer tools notifications - longer display for build results
+[category=x-kde-development]
+default-timeout=10000

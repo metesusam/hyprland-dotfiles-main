@@ -1,0 +1,319 @@
+/* Efficient Rofi Config - Optimized for productivity */
+
+configuration {
+    /* Core functionality */
+    modi: "drun,run,window,clipboard:cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    terminal: "kitty";
+    
+    /* Performance settings */
+    cache-dir: "~/.cache/rofi";
+    drun-use-desktop-cache: true;
+    drun-reload-desktop-cache: false;
+    threads: 0; /* Auto-detect optimal thread count */
+    
+    /* Behavior */
+    matching: "fuzzy";
+    sort: true;
+    sorting-method: "fzf";
+    case-sensitive: false;
+    cycle: true;
+    sidebar-mode: false;
+    
+    /* Application launcher settings */
+    drun-match-fields: "name,generic,exec,categories";
+    drun-display-format: "{name}";
+    
+    /* Window switcher settings */
+    window-match-fields: "title,class,role,name";
+    window-format: "{w} · {c} · {t}";
+    window-thumbnail: false;
+    
+    /* Appearance */
+    font: "JetBrains Mono 11";
+    fixed-num-lines: true;
+    show-match: true;
+    hide-scrollbar: true;
+    
+    /* Layout */
+    location: 0; /* Center */
+    width: 40; /* 40% of screen width */
+    lines: 10;
+    columns: 1;
+    
+    /* Keybindings */
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-remove-to-eol: "";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-select: "Control+space";
+    kb-element-next: "Tab";
+    kb-cancel: "Escape,Control+g,Control+bracketleft";
+}
+
+/* Catppuccin Mocha Theme - Optimized */
+* {
+    /* Base colors */
+    background:     #1e1e2e;
+    background-alt: #181825;
+    foreground:     #cdd6f4;
+    selected:       #89b4fa;
+    active:         #a6e3a1;
+    urgent:         #f38ba8;
+    
+    /* UI colors */
+    border-color:   #cba6f7;
+    prompt-color:   #cba6f7;
+    
+    /* Global properties */
+    background-color: @background;
+    text-color: @foreground;
+}
+
+window {
+    background-color: @background;
+    border: 2px;
+    border-color: @border-color;
+    border-radius: 8px;
+    padding: 12px;
+    width: 40%;
+    transparency: "real";
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+    spacing: 10px;
+}
+
+inputbar {
+    spacing: 0;
+    padding: 8px;
+    background-color: @background-alt;
+    border-radius: 6px;
+    margin: 0 0 10px 0;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    spacing: 0;
+    text-color: @prompt-color;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    spacing: 0;
+    placeholder: "Type to search...";
+    placeholder-color: #6c7086;
+}
+
+listview {
+    spacing: 5px;
+    border: 0;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: @background-alt;
+    fixed-height: true;
+    dynamic: true;
+}
+
+element {
+    padding: 8px;
+    border-radius: 4px;
+    spacing: 10px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: #313244;
+    text-color: @selected;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 8px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+    background-color: transparent;
+}
+
+message {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: @background-alt;
+}
+
+/*
+   If you want to use a pre-made Catppuccin theme for Rofi,
+   you can often find them on GitHub. For example, search for "rofi catppuccin theme".
+   If you install one, you might put it in ~/.config/rofi/themes/ or here,
+   and then use `@theme "path/to/theme.rasi"` at the top of this file,
+   or set `configuration { theme: "themename"; }` if it's installed in a standard Rofi theme path.
+*/
+
+/* For a more detailed manual Catppuccin Mocha theme, you could use: */
+@theme "/dev/null" /* Prevent default theme overriding, use if defining all colors manually below */
+
+* {
+    /* Catppuccin Mocha Pallete */
+    rosewater:  #f5e0dc;
+    flamingo:   #f2cdcd;
+    pink:       #f5c2e7;
+    mauve:      #cba6f7;
+    red:        #f38ba8;
+    maroon:     #eba0ac;
+    peach:      #fab387;
+    yellow:     #f9e2af;
+    green:      #a6e3a1;
+    teal:       #94e2d5;
+    sky:        #89dceb;
+    sapphire:   #74c7ec;
+    blue:       #89b4fa;
+    lavender:   #b4befe;
+
+    text:       #cdd6f4;
+    subtext1:   #bac2de;
+    subtext0:   #a6adc8;
+
+    overlay2:   #9399b2;
+    overlay1:   #7f849c;
+    overlay0:   #6c7086;
+
+    surface2:   #585b70;
+    surface1:   #45475a;
+    surface0:   #313244;
+
+    base:       #1e1d2f;
+    mantle:     #181825;
+    crust:      #11111b;
+
+    /* Global settings */
+    font: "JetBrains Mono 11"; /* Redundant if set in configuration block but good for clarity */
+    background-color: @base;
+    text-color: @text;
+
+    /* Element specific */
+    selected-background: @surface1;
+    selected-text-color: @blue;
+    active-background: @surface0;
+    active-text-color: @green;
+    urgent-background: @surface0;
+    urgent-text-color: @red;
+}
+
+window {
+    background-color: @base;
+    border: 2px;
+    border-color: @mauve;
+    border-radius: 8px;
+    padding: 15px;
+    width: 50%; /* Adjust as needed */
+    /* location: center; */ /* This sometimes needs to be set here too */
+    /* anchor: center; */
+    /* x-offset: 0; */
+    /* y-offset: 0; */
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+message {
+    border: 1px solid @surface2;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: @surface0;
+}
+
+textbox {
+    text-color: @text;
+}
+
+listview {
+    fixed-height: 0;
+    border: 1px solid @surface1;
+    border-radius: 4px;
+    padding: 8px;
+    columns: 1;
+    lines: 8; /* Match configuration block for consistency */
+    spacing: 5px;
+    scrollbar: false;
+    background-color: @mantle;
+}
+
+element {
+    border: 0;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @selected-background;
+    text-color: @selected-text-color;
+}
+
+element urgent, element active {
+    /* text-color: @background-color; */ /* This is not needed if using specific _text_color */
+}
+element urgent {
+    background-color: @urgent-background;
+    text-color: @urgent-text-color;
+}
+element active {
+    background-color: @active-background;
+    text-color: @active-text-color;
+}
+
+
+inputbar {
+    spacing: 0;
+    text-color: @text;
+    padding: 8px;
+    children: [ prompt, textbox-prompt-colon, entry, case-indicator ];
+    background-color: @surface0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+prompt {
+    spacing: 0;
+    text-color: @mauve; /* Make prompt stand out */
+    padding: 0 8px 0 0;
+}
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    margin: 0px 0.3em 0em 0em;
+    text-color: @mauve;
+}
+entry {
+    text-color: @text;
+    placeholder: "Search...";
+    placeholder-color: @subtext0;
+}
+case-indicator {
+    spacing: 0;
+    text-color: @text;
+}
+
+/* You might need to adjust path for rofi-wayland if it differs */
+/* For cliphist integration in Hyprland, your `hyprland.conf` has: */
+/* bind = $mainMod, V, exec, sh -c 'cliphist list | rofi -dmenu | cliphist decode | wl-copy' */
+/* This `config.rasi` modi definition provides another way to access it: */
+/* modi: "...,clipboard:cliphist list | rofi -dmenu ..."; */
+/* The `rofi -dmenu` part in the modi uses its own theming, so the `-theme-str` is important for it. */ 
